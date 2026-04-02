@@ -1,0 +1,93 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { SITE_TITLE } from '../../consts';
+
+const lessons = [
+  {
+    href: '/learn/supply-and-demand',
+    title: 'Supply and Demand (Interactive)',
+    description: 'Explore how price affects supply, demand, and profit using interactive charts and sliders.',
+    topic: 'Economics',
+  },
+];
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={`Learn — ${SITE_TITLE}`} description="Interactive lessons and explainers." />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <h1>Learn</h1>
+      <p class="subtitle">Interactive lessons and explainers.</p>
+      <ul class="lesson-list">
+        {lessons.map(lesson => (
+          <li>
+            <a href={lesson.href}>
+              <span class="topic">{lesson.topic}</span>
+              <span class="title">{lesson.title}</span>
+              <span class="description">{lesson.description}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  main {
+    padding-top: 2em;
+  }
+  h1 {
+    margin-bottom: 0.25rem;
+  }
+  .subtitle {
+    color: rgb(var(--gray));
+    margin-bottom: 2em;
+  }
+  .lesson-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .lesson-list a {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid rgb(var(--gray-light));
+    border-radius: 8px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .lesson-list a:hover {
+    border-color: var(--accent);
+    box-shadow: var(--box-shadow);
+  }
+  .topic {
+    font-size: 0.75em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+  }
+  .title {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: rgb(var(--black));
+  }
+  .description {
+    font-size: 0.85em;
+    color: rgb(var(--gray));
+    line-height: 1.5;
+  }
+</style>
