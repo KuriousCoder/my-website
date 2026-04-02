@@ -1,0 +1,32 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import SupplyDemandExplorer from '../../components/SupplyDemandExplorer.jsx';
+import { SITE_TITLE } from '../../consts';
+---
+
+<html lang="en">
+  <head>
+    <BaseHead
+      title={`Supply and Demand (Interactive) — ${SITE_TITLE}`}
+      description="Explore how price affects supply, demand, and profit using interactive charts and sliders."
+    />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <SupplyDemandExplorer client:load />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  main {
+    width: 100%;
+    max-width: 56rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+</style>
